@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12 m-4 ">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#employeeModal">
+          Add New Employee
+        </button>
+      </div>
+    </div>
+    <form  [formGroup]="EmployeeDetailForm" (ngSubmit)="onSubmit()">
+      <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="Detail">Employee Detail</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="employeeName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="employeeName" placeholder="name" name="name" formControlName="name">
+                </div>
+                <div class="mb-3">
+                    <label for="employeeDepartment" class="form-label">Department</label>
+                    <input type="text" class="form-control" id="employeeDepartment" placeholder="Department" name="department" formControlName="department">
+                </div>
+                <div class="mb-3">
+                    <label for="employeeDesignation" class="form-label">Designation</label>
+                    <input type="text" class="form-control" id="employeeDesignation" placeholder="designation" name="designation" formControlName="designation">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" routerLink="/home" data-bs-dismiss="modal">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- //[routerLink]="['/hero', hero.id]" -->
+    <div class="card col-3 m-4 d-inline-block" *ngFor="let item of result">
+        <div class="card-header" [routerLink]="['/detail',item.empid]">
+          {{item.name}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{item.department}}</h5>
+          <p class="card-text">{{item.designation}}</p>
+          <a href="#" class="btn btn-primary me-4" [routerLink]="['/edit',item.empid]" >Edit</a>
+          <a href="#" class="btn btn-primary" (click)="DeleteData(item.empid)">Delete</a>
+        </div>
+      </div>
+  </div>
+  

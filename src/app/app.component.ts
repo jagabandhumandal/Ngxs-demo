@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FetchDetailsService } from './fetch-details.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Ngxs-demo';
+  result: any;
+    
+  
+  constructor() {
+    
+  }
+
+  ngOnInit(): void {
+    
+}
+ 
 }
